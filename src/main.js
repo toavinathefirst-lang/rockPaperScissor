@@ -1,11 +1,12 @@
 import './style.css'
 const computerChoiceDisplay = document.getElementById("computerChoice")
 const userChoiceDisplay = document.getElementById("userChoice")
-const result = document.getElementById("result")
+const resultDisplay= document.getElementById("result")
 const possibleChoices = document.querySelectorAll("button")
 
 let userChoice = ""
 let computerChoice = ""
+let result =""
 possibleChoices.forEach(possibleChoice =>
   possibleChoice.addEventListener("click",(e)=>{
     userChoice = e.target.id
@@ -26,4 +27,30 @@ function generateComputerChoice(){
   }
   computerChoiceDisplay.innerHTML=computerChoice
 
+  getResult()
+  resultDisplay.innerHTML=result
+
+}
+function getResult(){
+  if(computerChoice === userChoice){
+    result = "it's a draw"
+  }else if(computerChoice == "rock"){
+    if(userChoice == "paper"){
+      result = "You have WON "
+    }else {
+      result = "You have LOST "
+    }
+  }else if(computerChoice == "paper"){
+    if(userChoice == "scissor"){
+      result = "You have WON "
+    }else {
+      result = "You have LOST "
+    }
+  }else if(computerChoice == "scissor"){
+    if(userChoice == "rock"){
+      result = "You have WON "
+    }else {
+      result = "You have LOST "
+    }
+  }
 }
